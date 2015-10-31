@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=chaser
+comment0.target=BlueChaserDecorator(Chaser)
+comment1.params=
+comment1.target=void\ draw()
+comment2.params=
+comment2.target=void\ addColor()
+comment3.params=hp
+comment3.target=void\ setHp(int)
+numComments=4

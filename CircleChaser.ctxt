@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.params=
+comment0.target=greenfoot.GreenfootImage\ getImage()
+comment1.params=
+comment1.target=CircleChaser()
+comment2.params=
+comment2.target=int\ getDr()
+comment3.params=dr
+comment3.target=void\ setDr(int)
+comment4.params=
+comment4.target=int\ getHp()
+comment5.params=hp
+comment5.target=void\ setHp(int)
+comment6.params=
+comment6.target=void\ draw()
+numComments=7

@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Chased()
+comment0.text=\n\ creates\ image\ for\ actor\n
+comment1.params=world
+comment1.target=void\ addedToWorld(greenfoot.World)
+comment1.text=\n\ adds\ the\ gun\ for\ this\ actor\ into\ the\ world\n\n\ @param\ world\ the\ world\ this\ actor\ was\ added\ into\n
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\n\ move\ user-controlled\ actor\ and\ its\ gun;\ also,\ check\ for\ game\ over\n
+numComments=3

@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=filename\ world
+comment0.target=TextFileViewer(java.lang.String,\ greenfoot.World)
+comment0.text=\n\ TextFileViewer\ Constructor\:\ reads\ the\ text\ file,\ builds\ the\ text\ panel,\ the\ scrollbar\ image\ and\ the\n\ scrollbar\ handle\n\n\ @param\ filename\ the\ path/filename\ of\ the\ text\ file\ to\ read\ in\n\ @param\ world\ the\ World\ object\ to\ activate\ when\ leaving\ this\ world\n
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\n\ Method\ act\ (for\ scrollbar\ handle)\:\ handles\ mouse\ and\ keyboard\ events\ for\ scrolling\ of\ the\ text\ pane.\n
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\n\ Method\ act;\ handles\ keyboard\ events\ for\ leaving\ the\ text\ viewing\ world\n
+numComments=3
