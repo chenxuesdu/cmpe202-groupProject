@@ -10,6 +10,9 @@ public class Welt extends World
     public static Chased chased; // the player
     
     public int score; // the score
+    //add subjcet list by chenjie
+    public ArrayList<Chaser> chasers = new ArrayList<Chaser>();
+    
     public Welt()
     {
         super(800, 600, 1, false);
@@ -71,8 +74,9 @@ public class Welt extends World
         }
         decorator.draw();
         addObject(chaser, x, y);
-        
         chaser.turnTowards(400, 300);
+        //by chenjie
+        this.chasers.add(chaser);
         //System.out.println("nd----------");
     }
     
@@ -130,5 +134,15 @@ public class Welt extends World
             System.out.println(name+": "+count);
             objects.remove(0);
         }
+    }
+    //by chenjie
+    public int notifyChasers(){
+        int count = 0;
+        for (Chaser c : this.chasers){
+            removeObject(c);
+            count++;
+        }
+        this.chasers = new ArrayList<Chaser>();
+        return count;  
     }
 }

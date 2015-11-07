@@ -144,14 +144,21 @@ public class Chased extends Actor
             {
                 // get intersecting object and return result
                 Actor clsActor = getOneIntersectingObject(cls);
-                if (clsActor != null)
-                {
-                    // remove intersector and bump score
-                    getWorld().removeObject(clsActor);
-                    ((Welt)getWorld()).adjustScore(1);
-                    return true; 
+                if(clsActor == null){
+                    return false;
                 }
-                return false;
+                System.out.println(clsActor.getClass().getName());
+                if (clsActor.getClass().getName() == "CircleChaser"){
+                    int count = ((Welt)getWorld()).notifyChasers();
+                    ((Welt)getWorld()).adjustScore(count);
+                    return true;
+                }
+                
+                // remove intersector and bump score
+                getWorld().removeObject(clsActor);
+                ((Welt)getWorld()).adjustScore(1);
+                
+                return true; 
             }
             
             /**

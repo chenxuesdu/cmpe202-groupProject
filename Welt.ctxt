@@ -9,4 +9,6 @@ comment3.params=action
 comment3.target=void\ setAction(int)
 comment4.params=
 comment4.target=void\ getActorCounts()
-numComments=5
+comment5.params=
+comment5.target=int\ notifyChasers()
+numComments=6
