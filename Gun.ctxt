@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Gun()
+comment0.text=\r\n\ creates\ image\ for\ actor\r\n
+comment1.params=world
+comment1.target=void\ addedToWorld(greenfoot.World)
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ responds\ to\ mouse\ movement\ and\ mouse\ button\ clicks\r\n
+comment3.params=
+comment3.target=void\ updateGun()
+comment3.text=\r\n\ overwrite\ updateGun()\ method\r\n
+comment4.params=
+comment4.target=void\ morePower()
+comment5.params=
+comment5.target=void\ mostPower()
+numComments=6

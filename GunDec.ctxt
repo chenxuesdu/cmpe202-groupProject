@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.params=gun
+comment0.target=GunDec(Weapon)
+comment1.params=
+comment1.target=void\ updateGun()
+numComments=2
