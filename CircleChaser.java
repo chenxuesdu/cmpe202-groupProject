@@ -37,7 +37,7 @@ public class CircleChaser extends Chaser
     // create image for this actor
         //GreenfootImage image = new GreenfootImage(30, 30);
         image.fillOval(0, 0, 30, 30);
-        
+        image.setColor(new java.awt.Color(224, 240, 255));
         image.fillOval(7, 7, 16, 16);
         setImage(image);
     }

@@ -35,9 +35,10 @@ public class RectangleChaser extends Chaser
     }
     public void draw() {
     // create image for this actor
-        image.fillRect(7, 7, 16, 16);//interior
-        //image.setColor(new java.awt.Color(0, 0, 0));
         image.fillRect(0, 0, 30, 30);//bodor
+        
+        image.setColor(new java.awt.Color(224, 240, 255));
+        image.fillRect(7, 7, 16, 16);//interior
         setImage(image);
     }
 }

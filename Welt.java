@@ -64,7 +64,7 @@ public class Welt extends World
             case 0: chaser = new RectangleChaser(); break;
             case 1: chaser = new CircleChaser(); break;
         }
-        System.out.println("Random is " + random);
+        //System.out.println("Random is " + random);
         ChaserDecorator  decorator = new ChaserDecorator(chaser);
         random = Greenfoot.getRandomNumber(3);
         switch(random) {

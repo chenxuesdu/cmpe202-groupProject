@@ -17,7 +17,7 @@ public class GreenChaserDecorator extends ChaserDecorator
         super.draw();
     }
     public void addColor() {
-        super.getImage().setColor(new java.awt.Color(0, 255, 0));
+        super.getImage().setColor(new java.awt.Color(0, 153, 0));
     }
     public void setHp(int hp) {
         super.setHp(1);
