@@ -39,6 +39,9 @@ public abstract class QActor extends Actor
     protected static final int WRAP = 3;
     /** bounds action value -- indicates actor turns toward center upon reaching bounds */
     protected static final int BOUNCE = 4;
+    /** Speed, specially for chaser, by default is 100  */
+    private static int healthPower;
+    public static int speed = 1;
 
     private int qX, qY; // fine-tuned location coordinates (100x)
     private int vX, vY; // fine-tuned speeds along the horizontal axis and the vertial axis (100x)
@@ -117,6 +120,7 @@ public abstract class QActor extends Actor
      */
     public void addForce(int amount, int direction)
     {
+        amount = amount * speed;
         vX += Math.cos((double)direction*Math.PI/(180*QVAL))*(double)amount; // new horizontal speed
         vY += Math.sin((double)direction*Math.PI/(180*QVAL))*(double)amount; // new vertical speed
     }
@@ -301,4 +305,16 @@ public abstract class QActor extends Actor
      * @param speed the fine-tuned value the horizontal speed is to be set to
      */
     protected void setVY(int speed) { vY = speed; }
+    
+    public static void setHealthPower(int hp) {
+        healthPower = hp;
+    }
+    
+    public static int getHealthPower() {
+        return healthPower;
+    }
+    
+    public static void setSpeed(int p_speed) {
+        speed = p_speed;
+    }
 }
