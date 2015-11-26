@@ -12,11 +12,13 @@ public class Welt extends World
     public int score; // the score
     //add subjcet list by chenjie
     public ArrayList<Chaser> chasers = new ArrayList<Chaser>();
+    private int specialChaserTimes = 0;
     
     public Welt()
     {
         super(800, 600, 1, false);
         Greenfoot.setSpeed(60);
+        setBackground(new GreenfootImage("space.jpg"));
         // create background texts
         GreenfootImage bg = getBackground();
         bg.setFont(new Font("SERIF", Font.BOLD, 28));
@@ -25,14 +27,14 @@ public class Welt extends World
         adjustScore(0);
         bg.setColor(Color.gray);
         bg.setFont(new Font("SERIF", Font.BOLD, 32));
-        bg.drawString("Use mouse to aim gun and fire shots", 50, 400);
+        /*bg.drawString("Use mouse to aim gun and fire shots", 50, 400);
         bg.drawString("Use w-a-s-d keys to move player", 50, 430);
         bg.drawString("Press 'e' to change edge action", 50, 480);
         bg.drawString("Log onto site for high scores and code viewing", 50, 510);
         bg.drawString("Code view buttons at bottom of high score screen", 50, 540);
         bg.drawString("Press 'x' or 'escape' to return from code viewing", 50, 570);
         bg.setFont(new Font("SERIF", Font.BOLD, 36));
-        bg.drawString("EDGE ACTION: ", 50, 44);
+        bg.drawString("EDGE ACTION: ", 50, 44);*/
         // create player and reset game
         chased = new Chased();
         setAction(0);   
@@ -59,6 +61,7 @@ public class Welt extends World
         else y = (getHeight()-3+actionDistance*2)*(rand-2)+1-actionDistance;
         // if (Math.abs(x-chased.getX())+Math.abs(y-chased.getY()) < 200) return;
         Chaser chaser = new Chaser();
+        
         int random = Greenfoot.getRandomNumber(2);
         switch(random) {
             case 0: chaser = new RectangleChaser(); break;
@@ -73,6 +76,12 @@ public class Welt extends World
             case 2: decorator = new GreenChaserDecorator(chaser); break;
         }
         decorator.draw();
+        //by chenjie
+        if(specialChaserTimes > 10) {
+            chaser = new SpecialChaser();
+            specialChaserTimes = 0;
+        }
+        
         addObject(chaser, x, y);
         chaser.turnTowards(400, 300);
         //by chenjie
@@ -83,6 +92,7 @@ public class Welt extends World
     public void adjustScore(int adjustment)
     {
         score += adjustment; // adjust score
+        specialChaserTimes += adjustment;
         // adjust score display
         GreenfootImage bg = getBackground();
         bg.setColor(Color.white);
@@ -102,11 +112,11 @@ public class Welt extends World
         String[] texts = { "UNBOUND", "LIMIT", "REMOVAL", "WRAPPING", "BOUNCE" }; // the bounds text
         // adjust bounds display
         GreenfootImage bg = getBackground();
-        bg.setFont(new Font("SERIF", Font.BOLD, 36));
+        /*bg.setFont(new Font("SERIF", Font.BOLD, 36));
         bg.setColor(Color.white);
         bg.fillRect(350, 0, 200, 50);
         bg.setColor(Color.gray);
-        bg.drawString(texts[actionType], 350, 44);
+        bg.drawString(texts[actionType], 350, 44);*/
         // reset score
         score = 0;
         // ensure player is in world

@@ -14,10 +14,11 @@ public class Chased extends Actor
     public Chased()
     {
         // the image for this actor
-        GreenfootImage image = new GreenfootImage(50, 50);
-        image.fillOval(0, 0, 50, 50);
-        image.setColor(Color.green);
-        image.fillOval(7, 7, 36, 36);
+        //GreenfootImage image = new GreenfootImage(50, 50);
+        GreenfootImage image = new GreenfootImage("earth.png");
+        //image.fillOval(0, 0, 50, 50);
+        //image.setColor(Color.green);
+        //image.fillOval(7, 7, 36, 36);
         setImage(image);
     }
     
