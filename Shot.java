@@ -44,7 +44,12 @@ public class Shot extends QActor
         setVY(0);
         addForce(500, getRotation()*QVAL);
         move(); // moving (equivalent to 'move(5)' for a non-QActor)
-        if (hits(Chaser.class) || atWorldEdge()) getWorld().removeObject(this); // removing
+        try {
+            if (hits(Chaser.class) || atWorldEdge())
+                getWorld().removeObject(this); // removing
+        } catch (IllegalStateException e) {
+            
+        }
     }
     
     /**
@@ -69,22 +74,24 @@ public class Shot extends QActor
     private boolean hits(Class cls)
     {
         // get intersecting object and return result
-        Actor clsActor = getOneIntersectingObject(cls);
-        if(clsActor == null){
+        try{
+            Actor clsActor = getOneIntersectingObject(cls);
+            if(clsActor != null){
+                if (clsActor.getClass().getName() == "CircleChaser"){
+                    int count = ((Welt)getWorld()).notifyChasers();
+                    ((Welt)getWorld()).adjustScore(count);
+                    return true;
+                }
+                // remove intersector and bump score
+                getWorld().removeObject(clsActor);
+                ((Welt)getWorld()).adjustScore(1);
+                return true; 
+            }
             return false;
+        }catch (IllegalStateException e) {
+                    
         }
-        System.out.println(clsActor.getClass().getName());
-        if (clsActor.getClass().getName() == "CircleChaser"){
-            int count = ((Welt)getWorld()).notifyChasers();
-            ((Welt)getWorld()).adjustScore(count);
-            return true;
-        }
-        
-        // remove intersector and bump score
-        getWorld().removeObject(clsActor);
-        ((Welt)getWorld()).adjustScore(1);
-        
-        return true; 
+        return false;
     }
     
     /**
