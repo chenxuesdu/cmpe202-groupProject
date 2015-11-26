@@ -77,7 +77,7 @@ public class Shot extends QActor
         try{
             Actor clsActor = getOneIntersectingObject(cls);
             if(clsActor != null){
-                if (clsActor.getClass().getName() == "CircleChaser"){
+                if (clsActor.getClass().getName() == "SpecialChaser"){
                     int count = ((Welt)getWorld()).notifyChasers();
                     ((Welt)getWorld()).adjustScore(count);
                     return true;
