@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class Welt extends World
 {
+    GreenfootSound myMusic = new GreenfootSound("starwar.mp3");
     public static int actionType, actionDistance; // the world bounds action fields for the chasers
     public static Chased chased; // the player
     
@@ -42,6 +43,7 @@ public class Welt extends World
     
     public void act()
     {
+        myMusic.play();
         //System.out.println("Start-----------");
         // changing edge action
         String key = Greenfoot.getKey();
@@ -75,6 +77,7 @@ public class Welt extends World
             case 1: decorator = new BlueChaserDecorator(chaser); break;
             case 2: decorator = new GreenChaserDecorator(chaser); break;
         }
+        addObject(chaser, x, y);     
         decorator.draw();
         //by chenjie
         if(specialChaserTimes > 10) {
@@ -87,6 +90,11 @@ public class Welt extends World
         //by chenjie
         this.chasers.add(chaser);
         //System.out.println("nd----------");
+    }
+    
+        public int getScore()
+    {
+        return score;
     }
     
     public void adjustScore(int adjustment)

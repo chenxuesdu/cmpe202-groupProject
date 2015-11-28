@@ -73,4 +73,6 @@ public class Chaser extends QActor
             move(10);
         }
     }
+    
+    
 }
