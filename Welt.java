@@ -4,7 +4,7 @@ import java.awt.Font;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Welt extends World
+public class Welt extends World implements Subject
 {
     public static int actionType, actionDistance; // the world bounds action fields for the chasers
     public static Chased chased; // the player
@@ -85,7 +85,7 @@ public class Welt extends World
         addObject(chaser, x, y);
         chaser.turnTowards(400, 300);
         //by chenjie
-        this.chasers.add(chaser);
+        addChaser(chaser);
         //System.out.println("nd----------");
     }
     
@@ -154,5 +154,11 @@ public class Welt extends World
         }
         this.chasers = new ArrayList<Chaser>();
         return count;  
+    }
+    public void addChaser(Chaser c){
+        this.chasers.add(c);
+    }
+    public void removeChaser(Chaser c){
+        this.chasers.remove(c);
     }
 }

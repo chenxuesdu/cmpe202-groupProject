@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=
+comment0.target=int\ notifyChasers()
+comment1.params=c
+comment1.target=void\ addChaser(Chaser)
+comment2.params=c
+comment2.target=void\ removeChaser(Chaser)
+numComments=3

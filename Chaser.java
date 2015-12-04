@@ -1,6 +1,6 @@
 import greenfoot.*;
 
-public class Chaser extends QActor
+public class Chaser extends QActor implements Observer
 {
     private int dr = 0; // the current turn rate
     private int hp = 0; // the health pwoer of the chaser
