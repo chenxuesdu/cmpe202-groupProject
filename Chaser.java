@@ -75,9 +75,6 @@ public class Chaser extends QActor implements Observer
     }
     
     public void remove(){
-        if((Welt)getWorld() == null){
-            System.out.println("dfasfasdfasdf");
-        }
         getWorld().removeObject(this);
     }
 }

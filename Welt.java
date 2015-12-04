@@ -14,6 +14,8 @@ public class Welt extends World implements Subject
     public ArrayList<Chaser> chasers = new ArrayList<Chaser>();
     private int specialChaserTimes = 0;
     
+    
+    
     public Welt()
     {
         super(800, 600, 1, false);
@@ -22,11 +24,12 @@ public class Welt extends World implements Subject
         // create background texts
         GreenfootImage bg = getBackground();
         bg.setFont(new Font("SERIF", Font.BOLD, 28));
-        bg.setColor(Color.black);
+        bg.setColor(Color.gray);
         bg.drawString("Score:", 600, 40);
         adjustScore(0);
         bg.setColor(Color.gray);
-        bg.setFont(new Font("SERIF", Font.BOLD, 32));
+        bg.setFont(new Font("SERIF", Font.BOLD, 20));
+        bg.drawString("EDGE ACTION: ", 50, 44);
         chased = new Chased();
         setAction(0);   
     }
@@ -38,6 +41,7 @@ public class Welt extends World implements Subject
         String key = Greenfoot.getKey();
         if (key != null)
         {
+            if ("e".equals(key)) setAction(actionType+1);
             if ("q".equals(key)) Greenfoot.setWorld(new TextFileViewer("QActor.txt", this));
         }
         // adding chasers to world
@@ -104,13 +108,19 @@ public class Welt extends World implements Subject
     
     private void setAction(int action)
     {
-        removeObjects(getObjects(Chaser.class)); // remove old chasers
+        notifyChasers();
+        //removeObjects(getObjects(Chaser.class)); // remove old chasers
         actionType = action%5; // set bound action
         int[] distances = { 0, 0, -10, 0, -15 }; // bound ranges
         actionDistance = distances[actionType]; // the range for this action
         String[] texts = { "UNBOUND", "LIMIT", "REMOVAL", "WRAPPING", "BOUNCE" }; // the bounds text
         // adjust bounds display
         GreenfootImage bg = getBackground();
+        bg.setColor(Color.white);
+        bg.fillRect(200, 15, 110, 32);
+        bg.setFont(new Font("SERIF", Font.BOLD, 20));
+        bg.setColor(Color.black);
+        bg.drawString(texts[actionType], 200, 44);
         // reset score
         score = 0;
         // ensure player is in world
