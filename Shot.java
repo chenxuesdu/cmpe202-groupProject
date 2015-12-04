@@ -84,6 +84,7 @@ public class Shot extends QActor
                 }
                 // remove intersector and bump score
                 getWorld().removeObject(clsActor);
+                ((Welt)getWorld()).chasers.remove(clsActor);
                 ((Welt)getWorld()).adjustScore(1);
                 return true; 
             }

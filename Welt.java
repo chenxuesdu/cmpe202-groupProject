@@ -149,7 +149,7 @@ public class Welt extends World
     public int notifyChasers(){
         int count = 0;
         for (Chaser c : this.chasers){
-            removeObject(c);
+            c.remove();
             count++;
         }
         this.chasers = new ArrayList<Chaser>();

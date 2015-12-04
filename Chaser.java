@@ -73,4 +73,11 @@ public class Chaser extends QActor
             move(10);
         }
     }
+    
+    public void remove(){
+        if((Welt)getWorld() == null){
+            System.out.println("dfasfasdfasdf");
+        }
+        getWorld().removeObject(this);
+    }
 }
