@@ -27,15 +27,6 @@ public class Welt extends World implements Subject
         adjustScore(0);
         bg.setColor(Color.gray);
         bg.setFont(new Font("SERIF", Font.BOLD, 32));
-        /*bg.drawString("Use mouse to aim gun and fire shots", 50, 400);
-        bg.drawString("Use w-a-s-d keys to move player", 50, 430);
-        bg.drawString("Press 'e' to change edge action", 50, 480);
-        bg.drawString("Log onto site for high scores and code viewing", 50, 510);
-        bg.drawString("Code view buttons at bottom of high score screen", 50, 540);
-        bg.drawString("Press 'x' or 'escape' to return from code viewing", 50, 570);
-        bg.setFont(new Font("SERIF", Font.BOLD, 36));
-        bg.drawString("EDGE ACTION: ", 50, 44);*/
-        // create player and reset game
         chased = new Chased();
         setAction(0);   
     }
@@ -47,7 +38,6 @@ public class Welt extends World implements Subject
         String key = Greenfoot.getKey();
         if (key != null)
         {
-            if ("e".equals(key)) setAction(actionType+1);
             if ("q".equals(key)) Greenfoot.setWorld(new TextFileViewer("QActor.txt", this));
         }
         // adding chasers to world
@@ -89,40 +79,6 @@ public class Welt extends World implements Subject
         //System.out.println("nd----------");
     }
     
-    public void adjustScore(int adjustment)
-    {
-        score += adjustment; // adjust score
-        specialChaserTimes += adjustment;
-        // adjust score display
-        GreenfootImage bg = getBackground();
-        bg.setColor(Color.white);
-        bg.fillRect(684, 15, 100, 30);
-        bg.setColor(Color.black);
-        bg.setFont(new Font("SERIF", Font.BOLD, 28));
-        bg.setColor(Color.black);
-        bg.drawString(""+score, 684, 40);
-    }
-    
-    private void setAction(int action)
-    {
-        removeObjects(getObjects(Chaser.class)); // remove old chasers
-        actionType = action%5; // set bound action
-        int[] distances = { 0, 0, -10, 0, -15 }; // bound ranges
-        actionDistance = distances[actionType]; // the range for this action
-        String[] texts = { "UNBOUND", "LIMIT", "REMOVAL", "WRAPPING", "BOUNCE" }; // the bounds text
-        // adjust bounds display
-        GreenfootImage bg = getBackground();
-        /*bg.setFont(new Font("SERIF", Font.BOLD, 36));
-        bg.setColor(Color.white);
-        bg.fillRect(350, 0, 200, 50);
-        bg.setColor(Color.gray);
-        bg.drawString(texts[actionType], 350, 44);*/
-        // reset score
-        score = 0;
-        // ensure player is in world
-        if (chased.getWorld() == null) addObject(chased, 400, 300);
-    }
-
     public void getActorCounts()
     {
         java.util.List<Object> objects = getObjects(null);
@@ -145,6 +101,36 @@ public class Welt extends World implements Subject
             objects.remove(0);
         }
     }
+    
+    private void setAction(int action)
+    {
+        removeObjects(getObjects(Chaser.class)); // remove old chasers
+        actionType = action%5; // set bound action
+        int[] distances = { 0, 0, -10, 0, -15 }; // bound ranges
+        actionDistance = distances[actionType]; // the range for this action
+        String[] texts = { "UNBOUND", "LIMIT", "REMOVAL", "WRAPPING", "BOUNCE" }; // the bounds text
+        // adjust bounds display
+        GreenfootImage bg = getBackground();
+        // reset score
+        score = 0;
+        // ensure player is in world
+        if (chased.getWorld() == null) addObject(chased, 400, 300);
+    }
+    
+    public void adjustScore(int adjustment)
+    {
+        score += adjustment; // adjust score
+        specialChaserTimes += adjustment;
+        // adjust score display
+        GreenfootImage bg = getBackground();
+        bg.setColor(Color.white);
+        bg.fillRect(684, 15, 100, 30);
+        bg.setColor(Color.black);
+        bg.setFont(new Font("SERIF", Font.BOLD, 28));
+        bg.setColor(Color.black);
+        bg.drawString(""+score, 684, 40);
+    }
+
     //by chenjie
     public int notifyChasers(){
         int count = 0;
