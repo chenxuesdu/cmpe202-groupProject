@@ -19,7 +19,8 @@ public class Shot extends QActor
         this.RotationDegree = degree;
         setBoundedAction(QActor.REMOVE, 5); // set bounds fields
         // create image for this actor
-        GreenfootImage image = new GreenfootImage(5, 2);
+        GreenfootImage image = new GreenfootImage(10, 8);
+        image.setColor(java.awt.Color.white);
         image.fill();
         setImage(image);
     }

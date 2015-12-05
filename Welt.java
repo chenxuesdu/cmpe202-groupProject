@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class Welt extends World implements Subject
 {
+    GreenfootSound myMusic = new GreenfootSound("starwar.mp3");
     public static int actionType, actionDistance; // the world bounds action fields for the chasers
     public static Chased chased; // the player
     
@@ -13,8 +14,6 @@ public class Welt extends World implements Subject
     //add subjcet list by chenjie
     public ArrayList<Chaser> chasers = new ArrayList<Chaser>();
     private int specialChaserTimes = 0;
-    
-    
     
     public Welt()
     {
@@ -29,13 +28,13 @@ public class Welt extends World implements Subject
         adjustScore(0);
         bg.setColor(Color.gray);
         bg.setFont(new Font("SERIF", Font.BOLD, 20));
-        bg.drawString("EDGE ACTION: ", 50, 44);
         chased = new Chased();
         setAction(0);   
     }
     
     public void act()
     {
+        myMusic.play();
         //System.out.println("Start-----------");
         // changing edge action
         String key = Greenfoot.getKey();
@@ -69,6 +68,7 @@ public class Welt extends World implements Subject
             case 1: decorator = new BlueChaserDecorator(chaser); break;
             case 2: decorator = new GreenChaserDecorator(chaser); break;
         }
+        addObject(chaser, x, y);
         decorator.draw();
         //by chenjie
         if(specialChaserTimes > 10) {
@@ -79,7 +79,7 @@ public class Welt extends World implements Subject
         addObject(chaser, x, y);
         chaser.turnTowards(400, 300);
         //by chenjie
-        addChaser(chaser);
+        this.chasers.add(chaser);
         //System.out.println("nd----------");
     }
     
@@ -116,15 +116,20 @@ public class Welt extends World implements Subject
         String[] texts = { "UNBOUND", "LIMIT", "REMOVAL", "WRAPPING", "BOUNCE" }; // the bounds text
         // adjust bounds display
         GreenfootImage bg = getBackground();
-        bg.setColor(Color.white);
+        /*bg.setColor(Color.white);
         bg.fillRect(200, 15, 110, 32);
         bg.setFont(new Font("SERIF", Font.BOLD, 20));
         bg.setColor(Color.black);
-        bg.drawString(texts[actionType], 200, 44);
+        bg.drawString(texts[actionType], 200, 44);*/
         // reset score
         score = 0;
         // ensure player is in world
         if (chased.getWorld() == null) addObject(chased, 400, 300);
+    }
+    
+    public int getScore()
+    {
+        return score;
     }
     
     public void adjustScore(int adjustment)
